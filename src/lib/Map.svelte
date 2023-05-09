@@ -24,7 +24,6 @@
 			]
 		});
 		map.addControl(new mapboxgl.NavigationControl());
-		map.addControl(new mapboxgl.ScaleControl());
 
 		clickMarker.set(new mapboxgl.Marker({ color: "#db0f0f" }));
 
