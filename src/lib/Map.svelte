@@ -46,22 +46,30 @@
 	});
 
 	let mouseDown;
-	function mouseMove({ clientY }) {
+	const mouseMoveHandler = ({ clientY }) => {
 		if (mouseDown) {
 			height = window.innerHeight - clientY + "px";
 			map.resize();
 		}
-	}
+	};
+
+	const mouseUpHandler = () => (mouseDown = false);
+	const mouseDownHandler = () => (mouseDown = true);
 </script>
 
 <svelte:head>
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
 </svelte:head>
 
-<svelte:body on:mouseup={() => (mouseDown = false)} on:mousemove={mouseMove} />
+<svelte:body
+	on:mouseup={mouseUpHandler}
+	on:touchend={mouseUpHandler}
+	on:mousemove={mouseMoveHandler}
+	on:touchmove={mouseMoveHandler}
+/>
 
 <div id="parent">
-	<div id="resize" on:mousedown={() => (mouseDown = true)}>
+	<div id="resize" on:mousedown={mouseDownHandler} on:touchstart={mouseDownHandler}>
 		<svg fill="white" xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 96 960 960">
 			<path d="M160 666v-60h640v60H160Zm0-120v-60h640v60H160Z" />
 		</svg>

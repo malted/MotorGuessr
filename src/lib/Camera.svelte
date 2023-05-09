@@ -140,8 +140,10 @@
 		overflow: hidden;
 		display: flex;
 	}
+
 	#parent * {
 		text-transform: uppercase;
+		text-align: center;
 		margin: 0;
 	}
 	img {
@@ -184,5 +186,18 @@
 	}
 	p {
 		font-size: 1.2rem;
+	}
+
+	@media only screen and (max-width: 660px) {
+		#parent {
+			flex-direction: column;
+			justify-content: space-around;
+			gap: 1rem;
+			margin-bottom: 1rem;
+		}
+		#info-container {
+			margin: 0;
+			height: fit-content;
+		}
 	}
 </style>
