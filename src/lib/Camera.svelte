@@ -6,7 +6,7 @@
 
 	export let data;
 
-	$: src = data.url.replace("/html/", "/images/").replace(".html", ".jpg");
+	$: src = data.url.replace("/html/", "/images/").replace(".html", ".jpg").replace("http://", "https://");
 
 	function guess() {
 		guessed.set(true);
